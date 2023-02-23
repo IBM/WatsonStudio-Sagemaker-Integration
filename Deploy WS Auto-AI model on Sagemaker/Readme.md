@@ -1,8 +1,8 @@
-This folder explains how to deploy an auto ai model trained on a demand response prediction file on Cloud Pak for data 4.5.x.
+This folder explains how to deploy an auto-ai model trained on a watson studio platform using demand response prediction file..
 
 Folder Structure: <br>
-**1. [Deploy Auto-AI Model.ipynb](https://github.ibm.com/Vikram-Bhat1/AutoAI-Sagemaker/blob/main/Sagemaker-AutoAI-Inference/Deploy%20Auto-AI%20Model.ipynb)** notebook contains instructions on how to deploy the model on Amazon Sagemaker using an inference script.<br>
-**2. auto-ai-pipeline.pickle**: Pickle file exported from Auto-AI pipeline.<br>
+**1. [Deploy Auto-AI Model.ipynb](https://github.com/IBM/WatsonStudio-Sagemaker-Integration/blob/main/Deploy%20WS%20Auto-AI%20model%20on%20Sagemaker/Deploy%20Auto-AI%20Model.ipynb)** notebook contains instructions on how to deploy the model on Amazon Sagemaker using an inference script.<br>
+**2. scikit_model.pkl**: Pickle file exported from Auto-AI pipeline.<br>
 **3. inference.py**: An entry point script which contains following functions. <br>
 `input_fn()` - Takes request data and deserializes the data into an object for prediction.  <br>
 `output_fn()` - Takes the result of prediction and serializes this according to the response content type.  <br>
