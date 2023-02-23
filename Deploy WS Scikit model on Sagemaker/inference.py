@@ -5,7 +5,7 @@ import sklearn
 import pandas as pd
 
 """
-Deserialize fitted model using model_fn
+Deserialize fitted model
 """
 def model_fn(model_dir):
     model = joblib.load(os.path.join(model_dir, "scikit_model.pkl"))
@@ -36,7 +36,12 @@ def predict_fn(input_data, model):
         cols = cols+columns
     df=pd.DataFrame(input_data['Input'],columns=input_data['Headers'])
     df_score=df[cols].copy()
-    return model.predict_proba(df_score)
+    
+    probs=model.predict_proba(df_score).tolist()
+    preds=model.predict(df_score).tolist()
+    
+    return [{'prediction':preds[i], 'probability':probs[i]} for i in range(len(preds))]
+    
 
 """
 output_fn
@@ -46,6 +51,6 @@ output_fn
 """
 
 def output_fn(prediction, content_type):
-    res = prediction.tolist()
-    respJSON = {'Output': res}
+    res = prediction
+    respJSON = {'predictions': res}
     return respJSON
